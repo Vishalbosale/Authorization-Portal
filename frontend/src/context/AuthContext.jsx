@@ -116,7 +116,7 @@ export const AuthProvider = ({ children }) => {
         try {
 
             const response = await fetch(
-                `${API_URL}/api/auth/login`,
+                `${API_URL}/auth/login`,
                 {
                     method: "POST",
 
@@ -206,7 +206,7 @@ export const AuthProvider = ({ children }) => {
         const timeoutId = setTimeout(() => controller.abort(), 3000);
 
         void fetch(
-            `${API_URL}/api/auth/logout`,
+            `${API_URL}/auth/logout`,
             {
                 method: "POST",
                 credentials: "include",
