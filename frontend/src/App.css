@@ -1,0 +1,77 @@
+/* =========================================================
+   APP SHELL
+   Layout frame + route transitions
+========================================================= */
+
+.app-shell {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+
+.app-main {
+    flex: 1;
+    width: 100%;
+}
+
+
+/* Each route mounts with its own key, so this replays per navigation */
+
+.route-view {
+    animation: route-enter var(--dur-4) var(--ease-out) both;
+}
+
+
+@keyframes route-enter {
+
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* Thin progress bar that runs across the top on every navigation */
+
+.route-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2.5px;
+    z-index: 1200;
+    pointer-events: none;
+    transform-origin: left center;
+    background: linear-gradient(
+        90deg,
+        var(--brand-500),
+        var(--brand-300),
+        var(--brand-600)
+    );
+    animation: route-progress var(--dur-5) var(--ease-out) both;
+}
+
+
+@keyframes route-progress {
+
+    0%   { transform: scaleX(0);    opacity: 1; }
+    65%  { transform: scaleX(0.82); opacity: 1; }
+    100% { transform: scaleX(1);    opacity: 0; }
+
+}
+
+
+/* Standard page padding, shared by every route */
+
+.page-shell {
+    max-width: var(--shell-max);
+    margin: 0 auto;
+    padding: clamp(24px, 3.4vw, 40px) var(--page-x) 64px;
+}

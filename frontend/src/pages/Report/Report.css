@@ -1,0 +1,258 @@
+/* =========================================================
+   REPORTS
+========================================================= */
+
+.report-page {
+    max-width: var(--shell-max);
+    margin: 0 auto;
+    padding: clamp(24px, 3.4vw, 40px) var(--page-x) 72px;
+}
+
+
+.report-heading-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+
+/* ---------- Export controls ---------- */
+
+.export-buttons {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+
+.export-buttons select,
+.export-button {
+    padding: 11px 15px;
+    border-radius: var(--r-xs);
+    font-weight: 600;
+    font-size: 13px;
+}
+
+
+.export-buttons select {
+    border: 1px solid var(--border-strong);
+    background-color: var(--surface);
+    color: var(--ink-700);
+}
+
+
+.report-table-note {
+    margin: 10px 0 0;
+    color: var(--ink-400);
+    font-size: 11.5px;
+}
+
+
+/* ---------- Filters ---------- */
+
+.report-filters {
+    margin-top: 24px;
+    padding: 18px 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    box-shadow: var(--sh-sm);
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 14px;
+    animation: rise-in var(--dur-4) var(--ease-out) both;
+}
+
+
+.filter-field {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.filter-field label {
+    margin-bottom: 6px;
+    color: var(--ink-500);
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+}
+
+
+.filter-field input,
+.filter-field select {
+    padding: 9px 11px;
+    font-size: 12.5px;
+}
+
+
+.filter-reset {
+    justify-content: flex-end;
+}
+
+
+.filter-reset button {
+    height: 36px;
+    align-self: flex-end;
+    padding: 0 14px;
+    border: 1px solid var(--border-strong);
+    background: var(--surface);
+    color: var(--ink-600);
+    border-radius: var(--r-xs);
+    font-size: 12px;
+    font-weight: 600;
+    transition:
+        background-color var(--dur-2) var(--ease-out),
+        border-color var(--dur-2) var(--ease-out),
+        color var(--dur-2) var(--ease-out);
+}
+
+
+.filter-reset button:hover {
+    background: var(--brand-50);
+    border-color: var(--brand-200);
+    color: var(--brand-700);
+}
+
+
+/* ---------- Summary cards ---------- */
+
+.report-cards {
+    margin: 22px 0;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+}
+
+
+.report-card {
+    position: relative;
+    overflow: hidden;
+    min-height: 104px;
+    padding: 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    box-shadow: var(--sh-sm);
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    animation: rise-in var(--dur-4) var(--ease-out) both;
+    transition:
+        border-color var(--dur-2) var(--ease-out),
+        box-shadow var(--dur-3) var(--ease-out),
+        transform var(--dur-3) var(--ease-spring);
+}
+
+
+.report-cards > .report-card:nth-child(1) { animation-delay: 0ms; }
+.report-cards > .report-card:nth-child(2) { animation-delay: 70ms; }
+.report-cards > .report-card:nth-child(3) { animation-delay: 140ms; }
+.report-cards > .report-card:nth-child(4) { animation-delay: 210ms; }
+
+
+.report-card::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, var(--brand-400), var(--brand-700));
+    transform: scaleY(0);
+    transform-origin: top center;
+    transition: transform var(--dur-3) var(--ease-out);
+}
+
+
+.report-card:hover,
+.report-card.selected {
+    transform: translateY(-4px);
+    border-color: var(--brand-200);
+    box-shadow: var(--sh-lg);
+}
+
+
+.report-card:hover::before,
+.report-card.selected::before {
+    transform: scaleY(1);
+}
+
+
+.report-card.selected {
+    background: linear-gradient(150deg, var(--brand-50), var(--surface) 78%);
+}
+
+
+.report-card span {
+    color: var(--ink-500);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+.report-card strong {
+    display: block;
+    margin-top: 10px;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.028em;
+    font-variant-numeric: tabular-nums;
+}
+
+
+/* ---------- Table ---------- */
+
+.report-table {
+    max-height: 560px;
+    padding: 0;
+}
+
+
+/* Not sticky: it scrolls away so the column headers can pin to the top. */
+.report-table h2 {
+    margin: 0;
+    padding: 18px 20px 14px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    font-size: 16px;
+}
+
+
+@media (max-width: 1000px) {
+
+    .report-filters {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .report-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 620px) {
+
+    .report-filters {
+        grid-template-columns: 1fr;
+    }
+
+    .report-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .export-buttons {
+        width: 100%;
+    }
+
+    .export-buttons select,
+    .export-button {
+        flex: 1;
+    }
+
+}

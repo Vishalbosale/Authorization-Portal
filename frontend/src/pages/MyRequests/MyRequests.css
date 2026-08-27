@@ -1,0 +1,161 @@
+/* =========================================================
+   MY REQUESTS
+========================================================= */
+
+.my-requests-page {
+    max-width: var(--shell-max);
+    margin: 0 auto;
+    padding: clamp(24px, 3.4vw, 40px) var(--page-x) 72px;
+}
+
+
+/* ---------- "Sent back to you" panel ---------- */
+
+.maker-returned-panel {
+    position: relative;
+    overflow: hidden;
+    margin-top: 24px;
+    padding: 20px 22px;
+    background: linear-gradient(150deg, var(--warn-50), var(--surface) 78%);
+    border: 1px solid var(--warn-100);
+    border-radius: var(--r-md);
+    box-shadow: var(--sh-sm);
+    animation: rise-in var(--dur-4) var(--ease-out) both;
+}
+
+
+.maker-returned-panel::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, var(--warn-600), var(--brand-500));
+}
+
+
+.maker-returned-panel h2 {
+    margin: 0 0 6px;
+    color: var(--warn-700);
+    font-size: 16px;
+}
+
+
+.maker-returned-panel > p {
+    margin: 0 0 16px;
+    color: var(--warn-600);
+    font-size: 12.5px;
+}
+
+
+.maker-returned-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 13px 15px;
+    background: var(--surface);
+    border: 1px solid var(--warn-100);
+    border-radius: var(--r-sm);
+    box-shadow: var(--sh-xs);
+    animation: row-in var(--dur-3) var(--ease-out) both;
+    transition:
+        transform var(--dur-2) var(--ease-spring),
+        box-shadow var(--dur-2) var(--ease-out),
+        border-color var(--dur-2) var(--ease-out);
+}
+
+
+.maker-returned-item:hover {
+    transform: translateX(3px);
+    border-color: var(--warn-600);
+    box-shadow: var(--sh-md);
+}
+
+
+.maker-returned-item + .maker-returned-item {
+    margin-top: 9px;
+}
+
+
+.maker-returned-item strong {
+    color: var(--ink-900);
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+
+.maker-returned-item span {
+    color: var(--warn-700);
+    font-size: 12.5px;
+}
+
+
+/* ---------- Toolbar ---------- */
+
+.history-tabs {
+    margin-top: 22px;
+}
+
+
+.request-list-toolbar {
+    margin-top: 20px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+
+.request-list-toolbar > input {
+    min-width: 260px;
+    padding: 10px 13px;
+    font-size: 12.5px;
+}
+
+
+.request-list-toolbar .export-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+
+.request-list-toolbar .export-buttons select,
+.request-list-toolbar .export-button {
+    padding: 10px 14px;
+    font-size: 12.5px;
+}
+
+
+.request-list-toolbar .export-buttons select {
+    border: 1px solid var(--border-strong);
+    background-color: var(--surface);
+    border-radius: var(--r-xs);
+    font-weight: 600;
+}
+
+
+/* ---------- Sent-back callout inside a row ---------- */
+
+.sent-back-callout {
+    padding: 15px;
+    margin-bottom: 15px;
+    background: var(--warn-50);
+    border: 1px solid var(--warn-100);
+    border-radius: var(--r-sm);
+}
+
+
+.sent-back-callout p {
+    margin: 0 0 11px;
+    color: var(--warn-700);
+    font-size: 13px;
+}
+
+
+.sent-back-callout .action-button {
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+}

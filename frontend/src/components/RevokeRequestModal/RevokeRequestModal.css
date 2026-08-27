@@ -1,0 +1,264 @@
+/* =========================================================
+   REVOKE REQUEST MODAL
+   Builds on the shared modal shell in RequestDetail.css
+========================================================= */
+
+.revoke-modal-card {
+    max-width: 860px;
+}
+
+
+.revoke-modal-card .modal-header h2 {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+}
+
+
+.revoke-header-icon {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--r-xs);
+    background: var(--danger-50);
+    border: 1px solid var(--danger-100);
+    color: var(--danger-600);
+}
+
+
+/* Red rule along the top, matching the revocation screens in the spec */
+.revoke-modal-card {
+    border-top: 3px solid var(--danger-600);
+}
+
+
+.revoke-hint {
+    margin: -4px 0 14px;
+    color: var(--ink-500);
+    font-size: 12px;
+}
+
+
+/* ---------- Prefilled request context ---------- */
+
+.revoke-prefilled-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+    padding: 16px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: var(--r-sm);
+}
+
+
+.revoke-prefilled-field {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 0;
+}
+
+
+.revoke-prefilled-field span {
+    color: var(--ink-400);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+}
+
+
+.revoke-prefilled-field strong {
+    color: var(--ink-700);
+    font-size: 12.5px;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+
+/* ---------- Inputs ---------- */
+
+.revoke-field-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+
+.revoke-field {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    margin-bottom: 16px;
+}
+
+
+.revoke-field-grid .revoke-field {
+    margin-bottom: 0;
+}
+
+
+.revoke-field label {
+    margin-bottom: 7px;
+    color: var(--ink-700);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+.revoke-field input,
+.revoke-field select,
+.revoke-field textarea {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 13px;
+}
+
+
+.revoke-field textarea {
+    line-height: 1.6;
+    resize: vertical;
+}
+
+
+.revoke-field-hint {
+    margin-top: 5px;
+    color: var(--ink-400);
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+
+.revoke-field label + .revoke-field-hint {
+    margin: -3px 0 8px;
+}
+
+
+.revoke-reason-fields {
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 1px dashed var(--border-strong);
+    animation: rise-in var(--dur-3) var(--ease-out) both;
+}
+
+
+.revoke-reason-fields .revoke-field-grid {
+    margin-bottom: 16px;
+}
+
+
+/* ---------- Uploads ---------- */
+
+.revoke-upload-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 14px;
+}
+
+
+.revoke-upload {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    background: var(--surface-2);
+    border: 1px dashed var(--border-strong);
+    border-radius: var(--r-sm);
+    transition: border-color var(--dur-2) var(--ease-out);
+}
+
+
+.revoke-upload:hover,
+.revoke-upload:focus-within {
+    border-color: var(--brand-400);
+}
+
+
+.revoke-upload label {
+    margin-bottom: 6px;
+    color: var(--ink-700);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+.revoke-upload input[type="file"] {
+    margin-top: 8px;
+    font-size: 11.5px;
+}
+
+
+.revoke-upload-note {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
+    color: var(--ink-400);
+    font-size: 10.5px;
+}
+
+
+.revoke-upload-file {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
+    padding: 5px 9px;
+    border-radius: var(--r-xs);
+    background: var(--success-50);
+    color: var(--success-700);
+    font-size: 11px;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+
+/* ---------- Validation ---------- */
+
+.revoke-problems {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 13px 15px;
+    margin-bottom: 18px;
+    background: var(--danger-50);
+    border: 1px solid var(--danger-100);
+    border-radius: var(--r-sm);
+    color: var(--danger-700);
+    animation: rise-in var(--dur-3) var(--ease-out) both;
+}
+
+
+.revoke-problems svg {
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+
+.revoke-problems ul {
+    margin: 0;
+    padding-left: 16px;
+    font-size: 12.5px;
+    line-height: 1.6;
+}
+
+
+@media (max-width: 860px) {
+
+    .revoke-prefilled-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+
+@media (max-width: 620px) {
+
+    .revoke-prefilled-grid,
+    .revoke-field-grid {
+        grid-template-columns: 1fr;
+    }
+
+}

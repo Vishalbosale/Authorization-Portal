@@ -1,0 +1,926 @@
+/* =========================================================
+   WORKFLOW GUIDE
+========================================================= */
+
+.workflow-page {
+    max-width: var(--shell-max);
+    margin: 0 auto;
+    padding: clamp(24px, 3.4vw, 40px) var(--page-x) 72px;
+}
+
+
+/* ---------- Header ---------- */
+
+.workflow-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    margin-bottom: 30px;
+    animation: rise-in var(--dur-4) var(--ease-out) both;
+}
+
+
+.workflow-header-icon {
+    width: 54px;
+    height: 54px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--r-md);
+    background: linear-gradient(135deg, var(--brand-500), var(--brand-700));
+    color: #fff;
+    box-shadow: var(--sh-brand);
+}
+
+
+.workflow-header h1 {
+    margin: 6px 0 0;
+    font-size: clamp(24px, 2.8vw, 30px);
+}
+
+
+.workflow-header p {
+    margin: 8px 0 0;
+    max-width: 60ch;
+    color: var(--ink-500);
+    font-size: 14px;
+}
+
+
+/* ---------- Introduction ---------- */
+
+.workflow-introduction {
+    padding: 26px 28px;
+    margin-bottom: 40px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    box-shadow: var(--sh-sm);
+    animation: rise-in var(--dur-4) 80ms var(--ease-out) both;
+}
+
+
+.workflow-introduction h2 {
+    margin: 0 0 12px;
+    font-size: 19px;
+}
+
+
+.workflow-introduction p {
+    margin: 0;
+    max-width: 92ch;
+    color: var(--ink-500);
+    font-size: 13.5px;
+    line-height: 1.78;
+}
+
+
+/* ---------- Step list ---------- */
+
+.workflow-process {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+
+.workflow-step {
+    position: relative;
+    width: 100%;
+    max-width: 820px;
+    padding: 22px 70px 22px 84px;
+    margin-bottom: 44px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    box-shadow: var(--sh-xs);
+    cursor: pointer;
+    animation: rise-in var(--dur-4) var(--ease-out) both;
+    animation-delay: calc(var(--i) * 70ms);
+    transition:
+        transform var(--dur-3) var(--ease-spring),
+        border-color var(--dur-2) var(--ease-out),
+        box-shadow var(--dur-3) var(--ease-out),
+        background-color var(--dur-3) var(--ease-out);
+}
+
+
+.workflow-step:hover {
+    transform: translateY(-3px);
+    border-color: var(--brand-200);
+    box-shadow: var(--sh-lg);
+}
+
+
+.workflow-step.active {
+    border-color: var(--brand-400);
+    background: linear-gradient(140deg, var(--brand-50) 0%, var(--surface) 62%);
+    box-shadow: var(--sh-lg);
+}
+
+
+.workflow-step-number {
+    position: absolute;
+    left: 22px;
+    top: 22px;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--surface-3);
+    color: var(--ink-500);
+    font-weight: 700;
+    font-size: 14px;
+    transition:
+        background-color var(--dur-3) var(--ease-out),
+        color var(--dur-3) var(--ease-out),
+        box-shadow var(--dur-3) var(--ease-out),
+        transform var(--dur-3) var(--ease-spring);
+}
+
+
+.workflow-step:hover .workflow-step-number {
+    transform: scale(1.06);
+}
+
+
+.workflow-step.active .workflow-step-number {
+    background: linear-gradient(135deg, var(--brand-500), var(--brand-700));
+    color: #fff;
+    box-shadow: var(--sh-brand);
+}
+
+
+.workflow-step-icon {
+    position: absolute;
+    right: 24px;
+    top: 22px;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--r-sm);
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    color: var(--ink-400);
+    transition:
+        background-color var(--dur-3) var(--ease-out),
+        color var(--dur-3) var(--ease-out),
+        border-color var(--dur-3) var(--ease-out);
+}
+
+
+.workflow-step.active .workflow-step-icon,
+.workflow-step:hover .workflow-step-icon {
+    background: var(--brand-50);
+    border-color: var(--brand-100);
+    color: var(--brand-600);
+}
+
+
+.workflow-step h3 {
+    margin: 4px 0 7px;
+    font-size: 16px;
+}
+
+
+.workflow-step p {
+    margin: 0;
+    color: var(--ink-500);
+    font-size: 13px;
+    line-height: 1.62;
+}
+
+
+/* Connector between steps */
+
+.workflow-arrow {
+    position: absolute;
+    left: 50%;
+    bottom: -34px;
+    transform: translateX(-50%);
+    z-index: 5;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--surface);
+    border: 1px solid var(--border-strong);
+    color: var(--ink-400);
+    transition:
+        color var(--dur-2) var(--ease-out),
+        border-color var(--dur-2) var(--ease-out);
+}
+
+
+/* The vertical rail the connector sits on */
+.workflow-arrow::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    bottom: -10px;
+    width: 2px;
+    background: var(--border-strong);
+    z-index: -1;
+}
+
+
+.workflow-step.active .workflow-arrow {
+    border-color: var(--brand-400);
+    color: var(--brand-600);
+}
+
+
+/* ---------- Step details ---------- */
+
+.workflow-details {
+    max-width: 920px;
+    margin: 52px auto 36px;
+    padding: 32px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    box-shadow: var(--sh-md);
+    animation: rise-in var(--dur-3) var(--ease-out) both;
+}
+
+
+.workflow-details-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding-bottom: 20px;
+    margin-bottom: 22px;
+    border-bottom: 1px solid var(--border);
+}
+
+
+.workflow-details-icon {
+    width: 50px;
+    height: 50px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--r-sm);
+    background: var(--brand-50);
+    border: 1px solid var(--brand-100);
+    color: var(--brand-600);
+}
+
+
+.workflow-details-header span {
+    color: var(--brand-600);
+    font-size: 10.5px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+}
+
+
+.workflow-details-header h2 {
+    margin: 4px 0 0;
+    font-size: 21px;
+}
+
+
+.workflow-details-description {
+    color: var(--ink-600);
+    line-height: 1.75;
+    font-size: 14px;
+}
+
+
+.workflow-details-list {
+    margin-top: 26px;
+    padding: 22px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: var(--r-sm);
+}
+
+
+.workflow-details-list h3 {
+    margin: 0 0 14px;
+    font-size: 13px;
+}
+
+
+.workflow-details-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+
+.workflow-details-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+    padding: 8px 0;
+    color: var(--ink-600);
+    font-size: 13px;
+    line-height: 1.6;
+    animation: row-in var(--dur-3) var(--ease-out) both;
+    animation-delay: calc(var(--i) * 55ms);
+}
+
+
+.check-icon {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    margin-top: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--success-100);
+    color: var(--success-700);
+    border-radius: 50%;
+}
+
+
+/* ---------- Navigation ---------- */
+
+.workflow-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 26px;
+}
+
+
+.workflow-navigation > button {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 10px 17px;
+    border: 1px solid var(--border-strong);
+    background: var(--surface);
+    color: var(--ink-600);
+    border-radius: var(--r-xs);
+    font-size: 12.5px;
+    font-weight: 600;
+    transition:
+        background-color var(--dur-2) var(--ease-out),
+        border-color var(--dur-2) var(--ease-out),
+        color var(--dur-2) var(--ease-out),
+        transform var(--dur-2) var(--ease-spring);
+}
+
+
+.workflow-navigation > button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    background: var(--brand-50);
+    border-color: var(--brand-200);
+    color: var(--brand-700);
+}
+
+
+.workflow-progress {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+
+.workflow-progress button {
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    border: none;
+    border-radius: var(--r-pill);
+    background: var(--ink-300);
+    transition:
+        width var(--dur-3) var(--ease-spring),
+        background-color var(--dur-2) var(--ease-out),
+        transform var(--dur-2) var(--ease-spring);
+}
+
+
+.workflow-progress button:hover {
+    background: var(--brand-300);
+    transform: scale(1.25);
+}
+
+
+.workflow-progress button.selected {
+    width: 26px;
+    background: var(--brand-600);
+    transform: none;
+}
+
+
+/* ---------- Approval hierarchy ---------- */
+
+.approval-section {
+    padding: 32px;
+    margin-bottom: 32px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    box-shadow: var(--sh-sm);
+}
+
+
+.approval-section h2 {
+    margin: 0 0 8px;
+}
+
+
+.approval-section > p {
+    margin: 0 0 30px;
+    max-width: 80ch;
+    color: var(--ink-500);
+    font-size: 13.5px;
+    line-height: 1.7;
+}
+
+
+.approval-flow {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+
+.approval-node {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    animation: pop-in var(--dur-4) var(--ease-out) both;
+    animation-delay: calc(var(--i) * 90ms);
+}
+
+
+.approval-box {
+    width: 132px;
+    height: 100%;
+    text-align: center;
+    padding: 16px 12px;
+    border: 1px solid var(--brand-100);
+    background: linear-gradient(160deg, var(--brand-50), var(--surface) 78%);
+    border-radius: var(--r-sm);
+    transition:
+        transform var(--dur-3) var(--ease-spring),
+        box-shadow var(--dur-3) var(--ease-out),
+        border-color var(--dur-2) var(--ease-out);
+}
+
+
+.approval-box:hover {
+    transform: translateY(-4px);
+    border-color: var(--brand-300);
+    box-shadow: var(--sh-md);
+}
+
+
+.approval-box > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    margin: 0 auto 10px;
+    border-radius: 50%;
+    background: var(--surface);
+    border: 1px solid var(--brand-100);
+    color: var(--brand-600);
+}
+
+
+.approval-box strong {
+    display: block;
+    color: var(--brand-800);
+    font-size: 12.5px;
+}
+
+
+.approval-box span {
+    display: block;
+    margin-top: 5px;
+    color: var(--ink-500);
+    font-size: 10.5px;
+    line-height: 1.45;
+}
+
+
+.approval-line {
+    display: flex;
+    align-items: center;
+    color: var(--brand-300);
+    flex-shrink: 0;
+}
+
+
+.letter-box {
+    background: linear-gradient(160deg, var(--success-50), var(--surface) 78%);
+    border-color: var(--success-100);
+}
+
+
+.letter-box > div {
+    border-color: var(--success-100);
+    color: var(--success-600);
+}
+
+
+.letter-box strong {
+    color: var(--success-700);
+}
+
+
+.letter-box:hover {
+    border-color: var(--success-600);
+}
+
+
+/* ---------- Revocation workflow ---------- */
+
+/* Revocation undoes an issued letter, so the whole section is re-toned from
+   the brand palette to the danger one - it should not read as another
+   approval step. */
+.revocation-section {
+    border-color: var(--danger-100);
+}
+
+
+.revocation-heading {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 10px;
+}
+
+
+.revocation-heading-icon {
+    flex-shrink: 0;
+    width: 46px;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--r-sm);
+    background: linear-gradient(135deg, var(--danger-600), var(--danger-700));
+    color: #fff;
+    box-shadow: 0 8px 18px -8px rgba(217, 45, 32, 0.55);
+}
+
+
+.revocation-heading .section-kicker {
+    color: var(--danger-600);
+}
+
+
+.revocation-heading h2 {
+    margin: 6px 0 0;
+}
+
+
+.revocation-section .approval-box {
+    border-color: var(--danger-100);
+    background: linear-gradient(160deg, var(--danger-50), var(--surface) 78%);
+}
+
+
+.revocation-section .approval-box > div {
+    border-color: var(--danger-100);
+    color: var(--danger-600);
+}
+
+
+.revocation-section .approval-box strong {
+    color: var(--danger-700);
+}
+
+
+.revocation-section .approval-box:hover {
+    border-color: var(--danger-600);
+}
+
+
+.revocation-section .approval-line {
+    color: var(--danger-100);
+}
+
+
+/* The terminal node: the letter is reversed, not merely pending. */
+.revoked-box {
+    background: linear-gradient(160deg, var(--ink-100), var(--surface) 78%) !important;
+    border-color: var(--border-strong) !important;
+}
+
+
+.revoked-box > div {
+    border-color: var(--border-strong) !important;
+    color: var(--ink-600) !important;
+}
+
+
+.revoked-box strong {
+    color: var(--ink-800) !important;
+}
+
+
+.revocation-stages {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 16px;
+    margin-top: 30px;
+}
+
+
+.revocation-stage {
+    padding: 20px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: var(--r-sm);
+    animation: rise-in var(--dur-4) var(--ease-out) both;
+    animation-delay: calc(var(--i) * 80ms);
+    transition:
+        border-color var(--dur-2) var(--ease-out),
+        box-shadow var(--dur-3) var(--ease-out);
+}
+
+
+.revocation-stage:hover {
+    border-color: var(--danger-100);
+    box-shadow: var(--sh-md);
+}
+
+
+.revocation-stage-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 14px;
+    margin-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+}
+
+
+.revocation-stage-icon {
+    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--r-sm);
+    background: var(--danger-50);
+    border: 1px solid var(--danger-100);
+    color: var(--danger-600);
+}
+
+
+.revocation-stage-head span {
+    display: block;
+    color: var(--ink-400);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+}
+
+
+.revocation-stage-head h3 {
+    margin: 4px 0 0;
+    font-size: 14px;
+}
+
+
+.revocation-stage ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.revocation-stage li {
+    display: flex;
+    gap: 10px;
+    color: var(--ink-600);
+    font-size: 12.5px;
+    line-height: 1.6;
+}
+
+
+.revocation-stage .check-icon {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    margin-top: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--danger-50);
+    color: var(--danger-600);
+}
+
+
+.revocation-reasons {
+    margin-top: 30px;
+    padding-top: 26px;
+    border-top: 1px solid var(--border);
+}
+
+
+.revocation-reasons h3 {
+    margin: 0 0 8px;
+    font-size: 15px;
+}
+
+
+.revocation-reasons > p {
+    margin: 0 0 18px;
+    max-width: 80ch;
+    color: var(--ink-500);
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+
+.revocation-reasons ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 10px;
+}
+
+
+.revocation-reasons li {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 13px 15px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--danger-100);
+    border-radius: var(--r-xs);
+    transition: border-left-color var(--dur-2) var(--ease-out);
+}
+
+
+.revocation-reasons li:hover {
+    border-left-color: var(--danger-600);
+}
+
+
+.revocation-reasons li strong {
+    color: var(--ink-800);
+    font-size: 12.5px;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+
+.revocation-reason-scope {
+    flex-shrink: 0;
+    padding: 3px 9px;
+    border-radius: var(--r-pill);
+    background: var(--surface-3);
+    color: var(--ink-500);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+}
+
+
+/* ---------- Information cards ---------- */
+
+.workflow-information {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 18px;
+}
+
+
+.information-card {
+    display: flex;
+    gap: 15px;
+    padding: 22px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    box-shadow: var(--sh-xs);
+    animation: rise-in var(--dur-4) var(--ease-out) both;
+    animation-delay: calc(var(--i) * 70ms);
+    transition:
+        transform var(--dur-3) var(--ease-spring),
+        border-color var(--dur-2) var(--ease-out),
+        box-shadow var(--dur-3) var(--ease-out);
+}
+
+
+.information-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--brand-200);
+    box-shadow: var(--sh-lg);
+}
+
+
+.information-icon {
+    flex-shrink: 0;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--r-sm);
+    background: var(--brand-50);
+    border: 1px solid var(--brand-100);
+    color: var(--brand-600);
+    transition:
+        background-color var(--dur-3) var(--ease-out),
+        color var(--dur-3) var(--ease-out),
+        transform var(--dur-3) var(--ease-spring);
+}
+
+
+.information-card:hover .information-icon {
+    background: linear-gradient(135deg, var(--brand-500), var(--brand-700));
+    border-color: transparent;
+    color: #fff;
+    transform: scale(1.06) rotate(-5deg);
+}
+
+
+.information-card h3 {
+    margin: 0 0 7px;
+    font-size: 14px;
+}
+
+
+.information-card p {
+    margin: 0;
+    color: var(--ink-500);
+    font-size: 12.5px;
+    line-height: 1.65;
+}
+
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 1180px) {
+
+    .approval-flow {
+        justify-content: flex-start;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding-bottom: 10px;
+    }
+
+    .approval-node {
+        flex-shrink: 0;
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .workflow-header {
+        gap: 14px;
+    }
+
+    .workflow-header-icon {
+        width: 44px;
+        height: 44px;
+    }
+
+    .workflow-step {
+        padding: 20px 20px 20px 74px;
+    }
+
+    .workflow-step-icon {
+        display: none;
+    }
+
+    .workflow-details,
+    .approval-section,
+    .workflow-introduction {
+        padding: 22px;
+    }
+
+    .workflow-navigation {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+}

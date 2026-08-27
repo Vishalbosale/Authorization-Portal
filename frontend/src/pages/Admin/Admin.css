@@ -1,0 +1,213 @@
+/* =========================================================
+   ADMIN - 360° VIEW
+========================================================= */
+
+.admin-page {
+    max-width: var(--shell-max);
+    margin: 0 auto;
+    padding: clamp(24px, 3.4vw, 40px) var(--page-x) 72px;
+}
+
+
+/* ---------- Stat cards ---------- */
+
+.admin-stats {
+    margin-top: 26px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+
+.admin-stat-card {
+    position: relative;
+    overflow: hidden;
+    padding: 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    box-shadow: var(--sh-sm);
+    animation: rise-in var(--dur-4) var(--ease-out) both;
+    transition:
+        transform var(--dur-3) var(--ease-spring),
+        box-shadow var(--dur-3) var(--ease-out),
+        border-color var(--dur-2) var(--ease-out);
+}
+
+
+.admin-stats > .admin-stat-card:nth-child(1) { animation-delay: 0ms; }
+.admin-stats > .admin-stat-card:nth-child(2) { animation-delay: 70ms; }
+.admin-stats > .admin-stat-card:nth-child(3) { animation-delay: 140ms; }
+.admin-stats > .admin-stat-card:nth-child(4) { animation-delay: 210ms; }
+
+
+.admin-stat-card::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, var(--brand-400), var(--brand-700));
+    transform: scaleY(0);
+    transform-origin: top center;
+    transition: transform var(--dur-3) var(--ease-out);
+}
+
+
+.admin-stat-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--border-strong);
+    box-shadow: var(--sh-lg);
+}
+
+
+.admin-stat-card:hover::before {
+    transform: scaleY(1);
+}
+
+
+.admin-stat-card span {
+    display: block;
+    color: var(--ink-500);
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+}
+
+
+.admin-stat-card strong {
+    display: block;
+    margin-top: 8px;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.15;
+    font-variant-numeric: tabular-nums;
+}
+
+
+.admin-stat-card.link-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: linear-gradient(150deg, var(--brand-50), var(--surface) 80%);
+    border-color: var(--brand-100);
+}
+
+
+.admin-stat-card.link-card span {
+    color: var(--brand-700);
+}
+
+
+.admin-stat-card.link-card a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 10px;
+    color: var(--brand-600);
+    font-weight: 700;
+    font-size: 13px;
+    transition: gap var(--dur-2) var(--ease-out);
+}
+
+
+.admin-stat-card.link-card a::after {
+    content: "→";
+    transition: transform var(--dur-2) var(--ease-out);
+}
+
+
+.admin-stat-card.link-card a:hover::after {
+    transform: translateX(3px);
+}
+
+
+/* ---------- Sections ---------- */
+
+.admin-section {
+    margin-top: 38px;
+}
+
+
+.admin-section-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+}
+
+
+.admin-section h2 {
+    margin: 0 0 4px;
+    font-size: 18px;
+}
+
+
+.admin-section-header select {
+    padding: 9px 12px;
+    font-size: 12.5px;
+    font-weight: 600;
+}
+
+
+.admin-search-field {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+
+.admin-search-field label {
+    color: var(--ink-500);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+}
+
+
+.admin-search-field input {
+    width: 210px;
+    padding: 9px 12px;
+    font-size: 12.5px;
+}
+
+
+/* ---------- Table ---------- */
+
+.checker-table-container {
+    margin-top: 16px;
+    max-height: 460px;
+}
+
+
+@media (max-width: 1000px) {
+
+    .admin-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 620px) {
+
+    .admin-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-section-header {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .admin-search-field input {
+        width: 100%;
+    }
+
+}
