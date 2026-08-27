@@ -34,7 +34,7 @@ export const AuthProvider = ({ children }) => {
         try {
 
             const response = await fetch(
-                `${API_URL}/api/auth/me`,
+                `${API_URL}/auth/me`,
                 {
                     method: "GET",
                     credentials: "include"
