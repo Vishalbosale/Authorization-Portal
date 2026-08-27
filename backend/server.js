@@ -118,6 +118,20 @@ app.get("/", (req, res) => {
 
 
 // ==========================================
+// HEALTH CHECK
+// ==========================================
+
+app.get("/api/health", (req, res) => {
+
+    res.status(200).json({
+        status: "OK",
+        message: "Authorization Portal Backend is running."
+    });
+
+});
+
+
+// ==========================================
 // SERVER
 // ==========================================
 
