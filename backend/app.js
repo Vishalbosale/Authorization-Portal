@@ -36,7 +36,7 @@ app.use(
 // API Health Check
 // ===============================
 
-app.get("/api/health", (req, res) => {
+/*app.get("/api/health", (req, res) => {
 
     res.json({
 
@@ -47,6 +47,13 @@ app.get("/api/health", (req, res) => {
 
     });
 
+});   */
+
+app.get("/api/health", (req, res) => {
+    res.status(200).json({
+        status: "OK",
+        message: "Authorization Portal backend is running"
+    });
 });
 
 
