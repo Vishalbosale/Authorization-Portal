@@ -10,7 +10,7 @@ const AuthContext = createContext(null);
 // IMPORTANT:
 // We are temporarily connecting directly to Node.
 // This bypasses the Vite proxy.
-const API_URL = "http://127.0.0.1:5000";
+const API_URL = "/api";
 
 export const AuthProvider = ({ children }) => {
 

@@ -33,7 +33,7 @@ import RequestDetailModal from "../../components/RequestDetail/RequestDetail";
 
 import "./Admin.css";
 
-const API_URL = "http://127.0.0.1:5000";
+const API_URL = "/api";
 
 function Admin() {
 

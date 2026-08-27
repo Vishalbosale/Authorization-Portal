@@ -25,7 +25,7 @@ import {
 import "./RevokeRequestModal.css";
 
 
-const API_URL = "http://127.0.0.1:5000";
+const API_URL = "/api";
 
 const EMPTY_FORM = {
     reasonCode: "",
